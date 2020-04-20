@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HigherLower</string>
+    <string name="current_number">Current Number</string>
+    <string name="_0">0</string>
+    <string name="banner_image">Banner Image</string>
+    <string name="button_higher">Button Higher</string>
+    <string name="button_lower">Button Lower</string>
+    <string name="current_score">Current Score</string>
+    <string name="round">Round #</string>
+    <string name="_1">1</string>
+    <string name="high_score">High Score:</string>
+    <string name="_99999">-99999</string>
+    <string name="_0_100">(0-100)</string>
+    <string name="Indicator">Correct!</string>
 </resources>
