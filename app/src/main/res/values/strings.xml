@@ -12,4 +12,6 @@
     <string name="_99999">-99999</string>
     <string name="_0_100">(0-100)</string>
     <string name="Indicator">Correct!</string>
+    <string name="_50">50</string>
+    <string name="_45">45</string>
 </resources>
