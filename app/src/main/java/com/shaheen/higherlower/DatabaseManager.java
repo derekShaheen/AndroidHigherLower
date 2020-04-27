@@ -22,7 +22,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public static String sessionID = generateSessionID();
 
     private static final String DATABASE_NAME = "db.db"; // Name of db file
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     /**
      * CREATE TABLE "score" (
@@ -36,7 +36,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             + TABLE_SCORE + "( "
             + TABLE_SCORE_C_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + TABLE_SCORE_C_SESSION + " NVARCHAR(30), "
-            + TABLE_SCORE_C_SCORE + " TEXT NOT NULL, "
+            + TABLE_SCORE_C_SCORE + " INTEGER NOT NULL, "
             + TABLE_SCORE_C_ROUND + " TEXT NOT NULL"
             + ");";
 
