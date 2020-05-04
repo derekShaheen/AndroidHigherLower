@@ -10,6 +10,13 @@ import android.util.Log;
 
 import java.util.UUID;
 
+/**
+ * @author Derek Shaheen
+ * @description This is designed to handle the inserts and selects from the database.
+ * @date: Apr 17, 2020
+ * @version: 1.1
+ */
+
 public class DatabaseManager extends SQLiteOpenHelper {
 
     public static final String TABLE_SCORE = "score"; // Name of the table
