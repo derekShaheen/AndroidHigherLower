@@ -8,14 +8,14 @@ package com.shaheen.higherlower;
 public class ScoreTracker {
     private int score = 0;
 
-    public ScoreTracker(){
+    public ScoreTracker() {
     }
 
-    public void increaseScore(){
+    public void increaseScore() {
         score++;
     }
 
-    public void decreaseScore(){
+    public void decreaseScore() {
         score--;
     }
 

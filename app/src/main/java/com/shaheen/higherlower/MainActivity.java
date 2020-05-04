@@ -1,17 +1,11 @@
 package com.shaheen.higherlower;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.media.Image;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author Derek Shaheen
@@ -32,11 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     int currentRound = 1;
     int sessionHighScore = 0;
-
-    private int choiceResult = -99;
-
     HigherLowerModel theModel;
     DatabaseManager dbMgr;
+    private int choiceResult = -99;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
         setupCallButtonClickEvents();
 
-        tvCurrentNumber = (TextView) findViewById(R.id.tvCurrentNumber);
-        tvCurrentRound = (TextView) findViewById(R.id.tvRoundNumber);
-        tvCurrentScore = (TextView) findViewById(R.id.tvCurrentScore);
-        tvIndicator = (TextView) findViewById(R.id.tvIndicator);
-        tvHighScore = (TextView) findViewById(R.id.tvHighScore);
-        tvCurrentSessionHighScore = (TextView) findViewById(R.id.tvSessionHighScore);
+        tvCurrentNumber = findViewById(R.id.tvCurrentNumber);
+        tvCurrentRound = findViewById(R.id.tvRoundNumber);
+        tvCurrentScore = findViewById(R.id.tvCurrentScore);
+        tvIndicator = findViewById(R.id.tvIndicator);
+        tvHighScore = findViewById(R.id.tvHighScore);
+        tvCurrentSessionHighScore = findViewById(R.id.tvSessionHighScore);
 
         tvHighScore.setText(dbMgr.dbGetHighScore() + "");
         tvCurrentNumber.setText(theModel.getString());
@@ -61,33 +53,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupCallButtonClickEvents() {
-        buttonHigher = (ImageButton) findViewById(R.id.btnHigher);
+        buttonHigher = findViewById(R.id.btnHigher);
         buttonHigher.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 theModel.gen();
-                choiceResult = theModel.checkChoice(1);
+                choiceResult = theModel.checkChoice(1); // Send higher parameter
                 setTextboxes();
                 checkHighscore();
             }
         });
 
-        buttonLower = (ImageButton) findViewById(R.id.btnLower);
+        buttonLower = findViewById(R.id.btnLower);
         buttonLower.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 theModel.gen();
-                choiceResult = theModel.checkChoice(0);
+                choiceResult = theModel.checkChoice(0); // Send lower parameter
                 setTextboxes();
                 checkHighscore();
             }
         });
     }
 
-    private void setTextboxes(){
-        if(choiceResult > 0) {
+    private void setTextboxes() {
+        if (choiceResult > 0) {
             tvIndicator.setText("Correct!");
             tvCurrentScore.setTextColor(getResources().getColor(R.color.gameCorrect));
-        }
-        else {
+        } else {
             tvIndicator.setText("Incorrect!");
             tvCurrentScore.setTextColor(getResources().getColor(R.color.gameIncorrect));
         }
@@ -100,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkHighscore() {
-        if(Integer.parseInt(theModel.getScore()) > dbMgr.dbGetHighScore()) {
+        if (Integer.parseInt(theModel.getScore()) > dbMgr.dbGetHighScore()) {
             dbMgr.dbInsertNewScore(theModel.getScore(), currentRound + "");
             tvHighScore.setText(dbMgr.dbGetHighScore() + "");
         }
-        if(Integer.parseInt(theModel.getScore()) > sessionHighScore) {
+        if (Integer.parseInt(theModel.getScore()) > sessionHighScore) {
             sessionHighScore = Integer.parseInt(theModel.getScore());
             tvCurrentSessionHighScore.setText(sessionHighScore + "");
         }

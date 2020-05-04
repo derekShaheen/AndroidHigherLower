@@ -17,7 +17,7 @@ public class HigherLowerModel {
 
     public void gen() {
         randomPrevious = random;
-        random = (int)(Math.random() * 100);
+        random = (int) (Math.random() * 100);
     }
 
     public int get() {
@@ -33,7 +33,7 @@ public class HigherLowerModel {
     }
 
     public int checkChoice(int choice) {
-        if((get() > getPrevious()) && (choice == 1)) { // higher choice
+        if ((get() > getPrevious()) && (choice == 1)) { // higher choice
             score.increaseScore();
             return 1; // correct
         } else if ((get() < getPrevious()) && (choice == 0)) { // lower choice
@@ -45,7 +45,7 @@ public class HigherLowerModel {
         }
     }
 
-    public String getScore(){
+    public String getScore() {
         return score.printScore();
     }
 
